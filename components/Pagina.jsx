@@ -10,7 +10,7 @@ const Pagina = (props) => {
       <Cabecalho />
 
       <Container fluid className=" bg-dark py-5 text-white text-center mb-3">
-        <h1>{props.titulo}</h1>
+        <img src={props.titulo} />
       </Container>
 
       <Container className="mb-6 mt-6">{props.children}</Container>

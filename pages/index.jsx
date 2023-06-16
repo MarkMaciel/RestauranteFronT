@@ -7,7 +7,7 @@ import { BsJustify } from "react-icons/bs";
 
 const index = () => {
   return (
-    <Pagina titulo="Restaurante">
+    <Pagina titulo="https://cdn.discordapp.com/attachments/967872716063526942/1119405014297890866/FrontFoodTruck.png">
       <Row>
         <Col md={3}>
           <Card>
