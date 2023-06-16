@@ -1,13 +1,16 @@
 import Pagina from "@/components/Pagina";
+import Link from "next/link";
 import React from "react";
-import { Card, Col, Row } from "react-bootstrap";
+import { Button, Card, Col, Row } from "react-bootstrap";
+import { BsJustify } from "react-icons/bs";
 
 const index = () => {
   return (
     <Pagina titulo="Restaurante">
       <Row>
         <Col md={3}>
-          <Card mt-5 mb-5>
+          <Card>
+            <Card.Header>Entradas</Card.Header>
             <Card.Img
               variant="top"
               src={
@@ -15,12 +18,13 @@ const index = () => {
               }
             />
             <Card.Body>
-              <Card.Title>Entrada</Card.Title>
+              <Link href={'/cursos'} className='btn btn-primary'>Ver mais</Link>
             </Card.Body>
           </Card>
         </Col>
         <Col md={3}>
-          <Card mt-5 mb-5>
+          <Card>
+            <Card.Header>Prato Principal</Card.Header>
             <Card.Img
               variant="top"
               src={
@@ -28,12 +32,13 @@ const index = () => {
               }
             />
             <Card.Body>
-              <Card.Title>Prato Principal</Card.Title>
+              <Link href={'#'} className='btn btn-primary'>Ver mais</Link>
             </Card.Body>
           </Card>
         </Col>
         <Col md={3}>
-          <Card mt-5 mb-5>
+          <Card>
+          <Card.Header>Sobremesas</Card.Header>
             <Card.Img
               variant="top"
               src={
@@ -41,12 +46,13 @@ const index = () => {
               }
             />
             <Card.Body>
-              <Card.Title>Sobremesas</Card.Title>
+              <Link href={'#'} className='btn btn-primary'>Ver mais</Link>
             </Card.Body>
           </Card>
         </Col>
         <Col md={3}>
-          <Card mt-5 mb-5>
+          <Card>
+          <Card.Header>Bebidas</Card.Header>
             <Card.Img
               variant="top"
               src={
@@ -54,15 +60,16 @@ const index = () => {
               }
             />
             <Card.Body>
-              <Card.Title>Bebidas</Card.Title>
+              <Link href={'#'} className='btn btn-primary'>Ver mais</Link>
             </Card.Body>
           </Card>
         </Col>
       </Row>
+      <br/>
       <Row>
-        <button className="btn btn-primary" mt-5 mb-5 py-3>
+        <Button variant= "primary">
           Cadastrar
-        </button>
+        </Button>
       </Row>
     </Pagina>
   );
