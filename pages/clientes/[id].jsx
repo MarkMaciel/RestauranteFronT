@@ -1,5 +1,5 @@
 import Pagina from "@/components/Pagina";
-import professorValidator from "@/validators/professoresValidator";
+import alunoValidator from "@/validators/clientesValidators";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -19,7 +19,7 @@ const form = () => {
 
   useEffect(() => {
     if (query.id) {
-      axios.get(`/api/professores/${query.id}`).then((res) => {
+      axios.get(`/api/alunos/${query.id}`).then((res) => {
         const disciplina = res.data;
 
         for (let atributo in disciplina) {
@@ -30,8 +30,8 @@ const form = () => {
   }, [query.id]);
 
   function salvar(dados) {
-    axios.put(`/api/professores/${dados.id}`, dados);
-    push("/professores");
+    axios.put(`/api/alunos/${dados.id}`, dados);
+    push("/alunos");
   }
 
   return (
@@ -41,7 +41,7 @@ const form = () => {
           <Form.Label>Nome: </Form.Label>
           <Form.Control
             type="text"
-            {...register("nome", professorValidator.nome)}
+            {...register("nome", alunoValidator.nome)}
           />
           {errors.nome && (
             <small className="text-danger">{errors.nome.message}</small>
@@ -50,10 +50,7 @@ const form = () => {
 
         <Form.Group className="mb-3" controlId="cpf">
           <Form.Label>CPF: </Form.Label>
-          <Form.Control
-            type="text"
-            {...register("cpf", professorValidator.cpf)}
-          />
+          <Form.Control type="text" {...register("cpf", alunoValidator.cpf)} />
           {errors.cpf && (
             <small className="text-danger">{errors.cpf.message}</small>
           )}
@@ -63,21 +60,10 @@ const form = () => {
           <Form.Label>Matricula: </Form.Label>
           <Form.Control
             type="text"
-            {...register("matricula", professorValidator.matricula)}
+            {...register("matricula", alunoValidator.matricula)}
           />
           {errors.matricula && (
             <small className="text-danger">{errors.matricula.message}</small>
-          )}
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="salario">
-          <Form.Label>Salario: </Form.Label>
-          <Form.Control
-            type="number"
-            {...register("salario", professorValidator.salario)}
-          />
-          {errors.salario && (
-            <small className="text-danger">{errors.salario.message}</small>
           )}
         </Form.Group>
 
@@ -85,7 +71,7 @@ const form = () => {
           <Form.Label>Email: </Form.Label>
           <Form.Control
             type="email"
-            {...register("email", professorValidator.email)}
+            {...register("email", alunoValidator.email)}
           />
           {errors.email && (
             <small className="text-danger">{errors.email.message}</small>
@@ -96,7 +82,7 @@ const form = () => {
           <Form.Label>Telefone: </Form.Label>
           <Form.Control
             type="tel"
-            {...register("telefone", professorValidator.telefone)}
+            {...register("telefone", alunoValidator.telefone)}
           />
           {errors.telefone && (
             <small className="text-danger">{errors.telefone.message}</small>
@@ -105,10 +91,7 @@ const form = () => {
 
         <Form.Group className="mb-3" controlId="cep">
           <Form.Label>CEP: </Form.Label>
-          <Form.Control
-            type="text"
-            {...register("cep", professorValidator.cep)}
-          />
+          <Form.Control type="text" {...register("cep", alunoValidator.cep)} />
           {errors.cep && (
             <small className="text-danger">{errors.cep.message}</small>
           )}
@@ -118,7 +101,7 @@ const form = () => {
           <Form.Label>Logradouro: </Form.Label>
           <Form.Control
             type="text"
-            {...register("logradouro", professorValidator.logradouro)}
+            {...register("logradouro", alunoValidator.logradouro)}
           />
           {errors.logradouro && (
             <small className="text-danger">{errors.logradouro.message}</small>
@@ -129,7 +112,7 @@ const form = () => {
           <Form.Label>Complemento: </Form.Label>
           <Form.Control
             type="text"
-            {...register("complemento", professorValidator.complemento)}
+            {...register("complemento", alunoValidator.complemento)}
           />
           {errors.complemento && (
             <small className="text-danger">{errors.complemento.message}</small>
@@ -140,7 +123,7 @@ const form = () => {
           <Form.Label>Numero: </Form.Label>
           <Form.Control
             type="text"
-            {...register("numero", professorValidator.numero)}
+            {...register("numero", alunoValidator.numero)}
           />
           {errors.numero && (
             <small className="text-danger">{errors.numero.message}</small>
@@ -151,7 +134,7 @@ const form = () => {
           <Form.Label>Bairro: </Form.Label>
           <Form.Control
             type="text"
-            {...register("bairro", professorValidator.bairro)}
+            {...register("bairro", alunoValidator.bairro)}
           />
           {errors.bairro && (
             <small className="text-danger">{errors.bairro.message}</small>
@@ -163,7 +146,7 @@ const form = () => {
             <BsCheck2 className="me-1" />
             Salvar
           </Button>
-          <Link href={"/professores"} className="ms-2 btn btn-danger">
+          <Link href={"/clientes"} className="ms-2 btn btn-danger">
             <BsArrowLeftCircleFill className="me-1" />
             Voltar
           </Link>

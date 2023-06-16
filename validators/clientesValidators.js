@@ -1,4 +1,4 @@
-const alunoValidator = {
+const clienteValidator = {
   nome: {
     required: "O campo é obrigatório",
     minLength: {
@@ -91,4 +91,4 @@ const alunoValidator = {
     },
   },
 };
-export default alunoValidator;
+export default clienteValidator;

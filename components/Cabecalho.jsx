@@ -1,5 +1,6 @@
 import React from "react";
-import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Container, Nav, Navbar } from "react-bootstrap";
+import { BsFillPersonPlusFill } from "react-icons/bs";
 
 const Cabecalho = () => {
   return (
@@ -7,7 +8,9 @@ const Cabecalho = () => {
       <Navbar bg="secondary" variant="light">
         <Container>
           <Nav className="me-auto">
-            <Nav.Link href="/alunos">Login Cliente</Nav.Link>
+            <Nav.Link className="text-white" href="/clientes">
+              Faça seu cadastro <BsFillPersonPlusFill />
+            </Nav.Link>
           </Nav>
         </Container>
       </Navbar>
