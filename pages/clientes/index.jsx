@@ -32,8 +32,12 @@ const index = () => {
 
   return (
     <Pagina2 titulo="clientes">
-      <Link href={"/clientes/form"} className="btn btn-primary mb-2">
-        Criar novo <BsFillPersonPlusFill />
+      <Link
+        href={"/clientes/form"}
+        className="btn mb-2"
+        style={{ backgroundColor: "darkorange" }}
+      >
+        Cadastre-se <BsFillPersonPlusFill />
       </Link>
 
       <Table striped bordered hover variant="table table-hover table-dark">

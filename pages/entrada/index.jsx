@@ -28,8 +28,12 @@ const entrada = () => {
   return (
     <div>
       <Pagina2 titulo="Entradas">
-        <Link href={"/entrada/form"} className="btn btn-primary mb-2">
-          Novo
+        <Link
+          href={"/entrada/form"}
+          className="btn ms-2 mb-3"
+          style={{ backgroundColor: "darkorange" }}
+        >
+          Adicionar
           <BsPlusCircle className="ms-1" />
         </Link>
         <Row>

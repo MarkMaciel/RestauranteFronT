@@ -68,8 +68,8 @@ const index = () => {
             <Row className="">
               <Col>
                 <Link
-                  className="btn text-white"
-                  style={{ backgroundColor: "blue" }}
+                  className="btn"
+                  style={{ backgroundColor: "darkorange" }}
                   href={`${entradas.id}/form`}
                 >
                   Editar
