@@ -19,7 +19,11 @@ const index = () => {
               }
             />
             <Card.Body>
-              <Link href={"/entrada"} className="btn btn-primary">
+              <Link
+                href={"/entrada"}
+                className="btn"
+                style={{ backgroundColor: "darkorange" }}
+              >
                 Ver mais
               </Link>
             </Card.Body>
@@ -36,7 +40,11 @@ const index = () => {
               }
             />
             <Card.Body>
-              <Link href={"/pratoP"} className="btn btn-primary">
+              <Link
+                href={"/pratoP"}
+                className="btn"
+                style={{ backgroundColor: "darkorange" }}
+              >
                 Ver mais
               </Link>
             </Card.Body>
@@ -53,7 +61,11 @@ const index = () => {
               }
             />
             <Card.Body>
-              <Link href={"#"} className="btn btn-primary">
+              <Link
+                href={"#"}
+                className="btn"
+                style={{ backgroundColor: "darkorange" }}
+              >
                 Ver mais
               </Link>
             </Card.Body>
@@ -70,7 +82,11 @@ const index = () => {
               }
             />
             <Card.Body>
-              <Link href={"#"} className="btn btn-primary">
+              <Link
+                href={"#"}
+                className="btn"
+                style={{ backgroundColor: "darkorange" }}
+              >
                 Ver mais
               </Link>
             </Card.Body>
