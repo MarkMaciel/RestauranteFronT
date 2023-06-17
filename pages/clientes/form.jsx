@@ -151,7 +151,11 @@ const form = () => {
             Salvar
           </Button>
 
-          <Link href={"/clientes"} className="ms-2 btn btn-danger">
+          <Link
+            href={"/clientes"}
+            className="ms-2 btn"
+            style={{ backgroundColor: "DarkOrange" }}
+          >
             <BsArrowLeftCircleFill className="me-1" />
             Voltar
           </Link>

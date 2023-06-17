@@ -76,19 +76,19 @@ const form = () => {
           <Form.Control
             {...register("Imagem")}
             type="text"
-            placeholder="Adicione uma imagem: Recomendamos 1920x1080p"
+            placeholder="Adicione o link de uma imagem: Recomendamos 1920x1080p"
           />
         </Form.Group>
 
         <div className="text-center">
-          <Link href={"/entrada"} className="ms-3 btn btn-danger">
-            <BsArrowLeftCircleFill className="me-1" />
-            Voltar
-          </Link>
           <Button variant="success" onClick={handleSubmit(salvar)}>
             <BsCheck2 className="ms-1" />
             Salvar
           </Button>
+          <Link href={"/entrada"} className="ms-3 btn btn-danger">
+            <BsArrowLeftCircleFill className="me-1" />
+            Voltar
+          </Link>
         </div>
       </Form>
     </Pagina2>

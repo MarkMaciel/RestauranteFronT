@@ -1,4 +1,4 @@
-import Pagina from "@/components/Pagina";
+import Pagina2 from "@/components/Pagina2";
 import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
@@ -31,7 +31,7 @@ const index = () => {
   }
 
   return (
-    <Pagina titulo="clientes">
+    <Pagina2 titulo="clientes">
       <Link href={"/clientes/form"} className="btn btn-primary mb-2">
         Criar novo <BsFillPersonPlusFill />
       </Link>
@@ -78,7 +78,7 @@ const index = () => {
           ))}
         </tbody>
       </Table>
-    </Pagina>
+    </Pagina2>
   );
 };
 

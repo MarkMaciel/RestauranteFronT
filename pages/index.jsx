@@ -36,7 +36,7 @@ const index = () => {
               }
             />
             <Card.Body>
-              <Link href={"#"} className="btn btn-primary">
+              <Link href={"/pratoP"} className="btn btn-primary">
                 Ver mais
               </Link>
             </Card.Body>
