@@ -62,7 +62,7 @@ const index = () => {
             />
             <Card.Body>
               <Link
-                href={"#"}
+                href={"/sobremesa"}
                 className="btn"
                 style={{ backgroundColor: "darkorange" }}
               >
@@ -83,7 +83,7 @@ const index = () => {
             />
             <Card.Body>
               <Link
-                href={"#"}
+                href={"/bebida"}
                 className="btn"
                 style={{ backgroundColor: "darkorange" }}
               >

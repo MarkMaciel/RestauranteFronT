@@ -1,3 +1,4 @@
+import CardStyle from "@/components/CardStyle";
 import Pagina2 from "@/components/Pagina2";
 import axios from "axios";
 import Link from "next/link";
@@ -5,41 +6,41 @@ import React, { useEffect, useState } from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import { BsPlusCircle } from "react-icons/bs";
 
-const entrada = () => {
-  const [entradas, setEntradas] = useState([]);
+const sobremesa = () => {
+  const [sobremesas, setSobremesas] = useState([]);
 
   useEffect(() => {
     getAll();
   }, []);
 
   function getAll() {
-    axios.get("/api/entradas").then((res) => {
-      setEntradas(res.data);
+    axios.get("/api/sobremesas").then((res) => {
+      setSobremesas(res.data);
     });
   }
 
   function excluir(id) {
     if (confirm("Você tem certeza disso?")) {
-      axios.delete(`/api/entradas/${id}`);
+      axios.delete(`/api/sobremesas/${id}`);
       getAll();
     }
   }
   return (
     <div>
-      <Pagina2 titulo="Entradas">
+      <Pagina2 titulo="Sobremesas">
         <Link
-          href={"/entrada/form"}
-          className="btn ms-2 mb-3"
+          href={"/sobremesa/form"}
+          className="btn mb-2"
           style={{ backgroundColor: "darkorange" }}
         >
           Adicionar
           <BsPlusCircle className="ms-1" />
         </Link>
         <Row>
-          {entradas.map((item) => (
+          {sobremesas.map((item) => (
             <Col key={item.id}>
               <Link
-                href={`/entrada/${item.id}`}
+                href={`/sobremesa/${item.id}`}
                 style={{
                   textDecoration: "none",
                   color: "black",
@@ -61,4 +62,4 @@ const entrada = () => {
   );
 };
 
-export default entrada;
+export default sobremesa;

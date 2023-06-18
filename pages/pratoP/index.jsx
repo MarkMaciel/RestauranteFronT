@@ -6,37 +6,41 @@ import React, { useEffect, useState } from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import { BsPlusCircle } from "react-icons/bs";
 
-const entrada = () => {
-  const [entradas, setEntradas] = useState([]);
+const prato = () => {
+  const [pratos, setPratos] = useState([]);
 
   useEffect(() => {
     getAll();
   }, []);
 
   function getAll() {
-    axios.get("/api/entradas").then((res) => {
-      setEntradas(res.data);
+    axios.get("/api/pratos").then((res) => {
+      setPratos(res.data);
     });
   }
 
   function excluir(id) {
     if (confirm("Você tem certeza disso?")) {
-      axios.delete(`/api/entradas/${id}`);
+      axios.delete(`/api/pratos/${id}`);
       getAll();
     }
   }
   return (
     <div>
       <Pagina2 titulo="Prato Principal">
-        <Link href={"/entrada/form"} className="btn btn-primary mb-2">
-          Novo
+        <Link
+          href={"/pratoP/form"}
+          className="btn mb-2"
+          style={{ backgroundColor: "darkorange" }}
+        >
+          Adicionar
           <BsPlusCircle className="ms-1" />
         </Link>
         <Row>
-          {entradas.map((item) => (
+          {pratos.map((item) => (
             <Col key={item.id}>
               <Link
-                href={`/entrada/${item.id}`}
+                href={`/pratoP/${item.id}`}
                 style={{
                   textDecoration: "none",
                   color: "black",
@@ -58,4 +62,4 @@ const entrada = () => {
   );
 };
 
-export default entrada;
+export default prato;

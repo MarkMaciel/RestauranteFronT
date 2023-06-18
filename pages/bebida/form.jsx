@@ -2,13 +2,12 @@ import Pagina2 from "@/components/Pagina2";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { BsArrowLeftCircleFill, BsCheck2 } from "react-icons/bs";
 
-const index = () => {
-  const { push, query } = useRouter();
+const form = () => {
+  const { push } = useRouter();
   const {
     register,
     handleSubmit,
@@ -16,31 +15,19 @@ const index = () => {
     formState: { errors },
   } = useForm();
 
-  useEffect(() => {
-    if (query.id) {
-      axios.get(`/api/entradas/${query.id}`).then((res) => {
-        const entrada = res.data;
-
-        for (let atributo in entrada) {
-          setValue(atributo, entrada[atributo]);
-        }
-      });
-    }
-  }, [query.id]);
-
   function salvar(dados) {
-    axios.put(`/api/entradas/${dados.id}`, dados);
-    push(`/entrada/`);
+    axios.post("/api/bebidas", dados);
+    push("/bebida");
   }
 
   return (
-    <Pagina2 titulo="Editar entradas" footer="fixed">
+    <Pagina2 titulo="Adicionar bebida ao cardápio">
       <Form>
         <Row className="mb-3">
           <Form.Group as={Col} controlId="nome">
             <Form.Label>Nome: </Form.Label>
             <Form.Control
-              placeholder="Digite o nome do prato"
+              placeholder="Digite o nome da bebida"
               type="text"
               {...register("nome")}
             />
@@ -48,7 +35,6 @@ const index = () => {
               <small className="text-danger">{errors.nome.message}</small>
             )}
           </Form.Group>
-
           <Form.Group as={Col} controlId="ingredientes">
             <Form.Label>Ingredientes: </Form.Label>
             <Form.Control
@@ -65,9 +51,9 @@ const index = () => {
         </Row>
 
         <Form.Group className="mb-3" controlId="historia">
-          <Form.Label>História do prato: </Form.Label>
+          <Form.Label>História da bebida: </Form.Label>
           <Form.Control
-            placeholder="Conte a história deste prato"
+            placeholder="Conte a história desta bebida"
             type="text"
             {...register("historia")}
           />
@@ -77,11 +63,11 @@ const index = () => {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="imagem">
-          <Form.Label>Adicione uma foto do prato: </Form.Label>
+          <Form.Label>Adicione uma foto da bebida: </Form.Label>
           <Form.Control
             {...register("Imagem")}
             type="text"
-            placeholder="Adicione uma imagem: Recomendamos 1920x1080p"
+            placeholder="Adicione o link de uma imagem: Recomendamos 1920x1080p"
           />
         </Form.Group>
 
@@ -91,7 +77,7 @@ const index = () => {
             Salvar
           </Button>
           <Link
-            href={"/entrada"}
+            href={"/bebida"}
             className="btn ms-3"
             style={{ backgroundColor: "darkorange" }}
           >
@@ -104,4 +90,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default form;

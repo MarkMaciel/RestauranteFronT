@@ -1,3 +1,4 @@
+import CardStyle from "@/components/CardStyle";
 import Pagina2 from "@/components/Pagina2";
 import axios from "axios";
 import Link from "next/link";
@@ -5,41 +6,41 @@ import React, { useEffect, useState } from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import { BsPlusCircle } from "react-icons/bs";
 
-const entrada = () => {
-  const [entradas, setEntradas] = useState([]);
+const bebida = () => {
+  const [bebidas, setBebidas] = useState([]);
 
   useEffect(() => {
     getAll();
   }, []);
 
   function getAll() {
-    axios.get("/api/entradas").then((res) => {
-      setEntradas(res.data);
+    axios.get("/api/bebidas").then((res) => {
+      setBebidas(res.data);
     });
   }
 
   function excluir(id) {
     if (confirm("Você tem certeza disso?")) {
-      axios.delete(`/api/entradas/${id}`);
+      axios.delete(`/api/bebidas/${id}`);
       getAll();
     }
   }
   return (
     <div>
-      <Pagina2 titulo="Entradas">
+      <Pagina2 titulo="Bebidas">
         <Link
-          href={"/entrada/form"}
-          className="btn ms-2 mb-3"
+          href={"/bebida/form"}
+          className="btn mb-2"
           style={{ backgroundColor: "darkorange" }}
         >
           Adicionar
           <BsPlusCircle className="ms-1" />
         </Link>
         <Row>
-          {entradas.map((item) => (
+          {bebidas.map((item) => (
             <Col key={item.id}>
               <Link
-                href={`/entrada/${item.id}`}
+                href={`/bebida/${item.id}`}
                 style={{
                   textDecoration: "none",
                   color: "black",
@@ -61,4 +62,4 @@ const entrada = () => {
   );
 };
 
-export default entrada;
+export default bebida;

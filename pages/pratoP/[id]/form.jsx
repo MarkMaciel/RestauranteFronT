@@ -18,23 +18,23 @@ const index = () => {
 
   useEffect(() => {
     if (query.id) {
-      axios.get(`/api/entradas/${query.id}`).then((res) => {
-        const entrada = res.data;
+      axios.get(`/api/pratos/${query.id}`).then((res) => {
+        const prato = res.data;
 
-        for (let atributo in entrada) {
-          setValue(atributo, entrada[atributo]);
+        for (let atributo in prato) {
+          setValue(atributo, prato[atributo]);
         }
       });
     }
   }, [query.id]);
 
   function salvar(dados) {
-    axios.put(`/api/entradas/${dados.id}`, dados);
-    push(`/entrada/`);
+    axios.put(`/api/pratos/${dados.id}`, dados);
+    push(`/pratoP/`);
   }
 
   return (
-    <Pagina2 titulo="Editar entradas" footer="fixed">
+    <Pagina2 titulo="Editar Prato Principal" footer="fixed">
       <Form>
         <Row className="mb-3">
           <Form.Group as={Col} controlId="nome">
@@ -91,7 +91,7 @@ const index = () => {
             Salvar
           </Button>
           <Link
-            href={"/entrada"}
+            href={"/pratoP"}
             className="btn ms-3"
             style={{ backgroundColor: "darkorange" }}
           >

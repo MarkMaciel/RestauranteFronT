@@ -2,13 +2,12 @@ import Pagina2 from "@/components/Pagina2";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { BsArrowLeftCircleFill, BsCheck2 } from "react-icons/bs";
 
-const index = () => {
-  const { push, query } = useRouter();
+const form = () => {
+  const { push } = useRouter();
   const {
     register,
     handleSubmit,
@@ -16,25 +15,20 @@ const index = () => {
     formState: { errors },
   } = useForm();
 
-  useEffect(() => {
-    if (query.id) {
-      axios.get(`/api/entradas/${query.id}`).then((res) => {
-        const entrada = res.data;
-
-        for (let atributo in entrada) {
-          setValue(atributo, entrada[atributo]);
-        }
-      });
-    }
-  }, [query.id]);
-
   function salvar(dados) {
-    axios.put(`/api/entradas/${dados.id}`, dados);
-    push(`/entrada/`);
+    axios.post("/api/pratos", dados);
+    push("/pratoP");
+  }
+
+  function handleChange(event) {
+    const name = event.target.name;
+    const value = event.target.value;
+    const mascara = event.target.getAttribute("mask");
+    setValue(name, mask(value, mascara));
   }
 
   return (
-    <Pagina2 titulo="Editar entradas" footer="fixed">
+    <Pagina2 titulo="Adicionar prato ao cardápio">
       <Form>
         <Row className="mb-3">
           <Form.Group as={Col} controlId="nome">
@@ -48,7 +42,6 @@ const index = () => {
               <small className="text-danger">{errors.nome.message}</small>
             )}
           </Form.Group>
-
           <Form.Group as={Col} controlId="ingredientes">
             <Form.Label>Ingredientes: </Form.Label>
             <Form.Control
@@ -81,7 +74,7 @@ const index = () => {
           <Form.Control
             {...register("Imagem")}
             type="text"
-            placeholder="Adicione uma imagem: Recomendamos 1920x1080p"
+            placeholder="Adicione o link de uma imagem: Recomendamos 1920x1080p"
           />
         </Form.Group>
 
@@ -91,7 +84,7 @@ const index = () => {
             Salvar
           </Button>
           <Link
-            href={"/entrada"}
+            href={"/pratoP"}
             className="btn ms-3"
             style={{ backgroundColor: "darkorange" }}
           >
@@ -104,4 +97,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default form;

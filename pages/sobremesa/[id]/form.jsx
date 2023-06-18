@@ -18,29 +18,29 @@ const index = () => {
 
   useEffect(() => {
     if (query.id) {
-      axios.get(`/api/entradas/${query.id}`).then((res) => {
-        const entrada = res.data;
+      axios.get(`/api/sobremesas/${query.id}`).then((res) => {
+        const sobremesas = res.data;
 
-        for (let atributo in entrada) {
-          setValue(atributo, entrada[atributo]);
+        for (let atributo in sobremesas) {
+          setValue(atributo, sobremesas[atributo]);
         }
       });
     }
   }, [query.id]);
 
   function salvar(dados) {
-    axios.put(`/api/entradas/${dados.id}`, dados);
-    push(`/entrada/`);
+    axios.put(`/api/sobremesas/${dados.id}`, dados);
+    push(`/sobremesa/`);
   }
 
   return (
-    <Pagina2 titulo="Editar entradas" footer="fixed">
+    <Pagina2 titulo="Editar sobremesa" footer="fixed">
       <Form>
         <Row className="mb-3">
           <Form.Group as={Col} controlId="nome">
             <Form.Label>Nome: </Form.Label>
             <Form.Control
-              placeholder="Digite o nome do prato"
+              placeholder="Digite o nome da sobremesa"
               type="text"
               {...register("nome")}
             />
@@ -65,9 +65,9 @@ const index = () => {
         </Row>
 
         <Form.Group className="mb-3" controlId="historia">
-          <Form.Label>História do prato: </Form.Label>
+          <Form.Label>História da sobremesa: </Form.Label>
           <Form.Control
-            placeholder="Conte a história deste prato"
+            placeholder="Conte a história desta sobremesa"
             type="text"
             {...register("historia")}
           />
@@ -77,7 +77,7 @@ const index = () => {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="imagem">
-          <Form.Label>Adicione uma foto do prato: </Form.Label>
+          <Form.Label>Adicione uma foto da sobremesa: </Form.Label>
           <Form.Control
             {...register("Imagem")}
             type="text"
@@ -91,7 +91,7 @@ const index = () => {
             Salvar
           </Button>
           <Link
-            href={"/entrada"}
+            href={"/sobremesa"}
             className="btn ms-3"
             style={{ backgroundColor: "darkorange" }}
           >

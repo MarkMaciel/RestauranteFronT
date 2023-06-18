@@ -2,11 +2,9 @@ import Pagina2 from "@/components/Pagina2";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
-import { Button, Col, Form, InputGroup, Row } from "react-bootstrap";
+import { Button, Col, Form, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { BsArrowLeftCircleFill, BsCheck2 } from "react-icons/bs";
-import { mask } from "remask";
 
 const form = () => {
   const { push } = useRouter();
@@ -85,7 +83,11 @@ const form = () => {
             <BsCheck2 className="ms-1" />
             Salvar
           </Button>
-          <Link href={"/entrada"} className="ms-3 btn btn-danger">
+          <Link
+            href={"/entrada"}
+            className="btn ms-3"
+            style={{ backgroundColor: "darkorange" }}
+          >
             <BsArrowLeftCircleFill className="me-1" />
             Voltar
           </Link>
