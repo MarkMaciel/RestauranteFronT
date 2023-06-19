@@ -1,4 +1,5 @@
 import Pagina2 from "@/components/Pagina2";
+import bebidaValidator from "@/validators/bebidasValidators";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -56,7 +57,7 @@ const index = () => {
               type="text"
               {...register("ingredientes")}
             />
-            {errors.data && (
+            {errors.ingredientes && (
               <small className="text-danger">
                 {errors.ingredientes.message}
               </small>
@@ -71,7 +72,7 @@ const index = () => {
             type="text"
             {...register("historia")}
           />
-          {errors.data && (
+          {errors.historia && (
             <small className="text-danger">{errors.historia.message}</small>
           )}
         </Form.Group>
@@ -83,6 +84,20 @@ const index = () => {
             type="text"
             placeholder="Adicione uma imagem: Recomendamos 1920x1080p"
           />
+        </Form.Group>
+
+        <Form.Group className="mb-3">
+          <Form.Label>Escolha o tipo de bebida: </Form.Label>
+          <Form.Select {...register("tipo", bebidaValidator.tipo)}>
+            <option>Escolha o tipo de bebida</option>
+            <option value="Alcoolica">Alcoolica</option>
+            <option value="Suco">Suco</option>
+            <option value="Refrigerante">Refrigerante</option>
+            <option value="Milkshake">Milkshake</option>
+          </Form.Select>
+          {errors.tipo && (
+            <small className="text-danger">{errors.tipo.message}</small>
+          )}
         </Form.Group>
 
         <div className="text-center">

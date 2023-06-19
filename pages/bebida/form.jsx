@@ -1,4 +1,5 @@
 import Pagina2 from "@/components/Pagina2";
+import bebidaValidator from "@/validators/bebidasValidators";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -22,14 +23,14 @@ const form = () => {
 
   return (
     <Pagina2 titulo="Adicionar bebida ao cardápio">
-      <Form>
+      <Form className="text-white">
         <Row className="mb-3">
           <Form.Group as={Col} controlId="nome">
             <Form.Label>Nome: </Form.Label>
             <Form.Control
               placeholder="Digite o nome da bebida"
               type="text"
-              {...register("nome")}
+              {...register("nome", bebidaValidator.nome)}
             />
             {errors.nome && (
               <small className="text-danger">{errors.nome.message}</small>
@@ -40,9 +41,9 @@ const form = () => {
             <Form.Control
               placeholder="Digite os ingredientes"
               type="text"
-              {...register("ingredientes")}
+              {...register("ingredientes", bebidaValidator.ingredientes)}
             />
-            {errors.data && (
+            {errors.ingredientes && (
               <small className="text-danger">
                 {errors.ingredientes.message}
               </small>
@@ -57,7 +58,7 @@ const form = () => {
             type="text"
             {...register("historia")}
           />
-          {errors.data && (
+          {errors.historia && (
             <small className="text-danger">{errors.historia.message}</small>
           )}
         </Form.Group>
@@ -65,10 +66,24 @@ const form = () => {
         <Form.Group className="mb-3" controlId="imagem">
           <Form.Label>Adicione uma foto da bebida: </Form.Label>
           <Form.Control
-            {...register("Imagem")}
+            {...register("Imagem", bebidaValidator.Imagem)}
             type="text"
             placeholder="Adicione o link de uma imagem: Recomendamos 1920x1080p"
           />
+        </Form.Group>
+
+        <Form.Group className="mb-3">
+          <Form.Label>Escolha o tipo de bebida: </Form.Label>
+          <Form.Select {...register("tipo", bebidaValidator.tipo)}>
+            <option>Escolha o tipo de bebida</option>
+            <option value="Alcoolica">Alcoolica</option>
+            <option value="Suco">Suco</option>
+            <option value="Refrigerante">Refrigerante</option>
+            <option value="Milkshake">Milkshake</option>
+          </Form.Select>
+          {errors.tipo && (
+            <small className="text-danger">{errors.tipo.message}</small>
+          )}
         </Form.Group>
 
         <div className="text-center">
