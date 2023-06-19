@@ -13,7 +13,7 @@ const Pagina = (props) => {
       </div>
 
       <Container className="mb-6 mt-6">{props.children}</Container>
-      <Rodape />
+      <Rodape footer={props.footer} />
     </div>
   );
 };

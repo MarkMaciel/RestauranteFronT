@@ -1,4 +1,5 @@
 import Pagina2 from "@/components/Pagina2";
+import sobremesaValidator from "@/validators/sobremesasValidators";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -28,28 +29,29 @@ const form = () => {
   }
 
   return (
-    <Pagina2 titulo="Adicionar sobremesa ao cardápio">
+    <Pagina2 footer="fixed" titulo="Adicionar sobremesa ao cardápio">
       <Form>
         <Row className="mb-3">
           <Form.Group as={Col} controlId="nome">
             <Form.Label>Nome: </Form.Label>
             <Form.Control
-              placeholder="Digite o nome do sobremesa"
+              placeholder="Digite o nome da sobremesa"
               type="text"
-              {...register("nome")}
+              {...register("nome", sobremesaValidator.nome)}
             />
             {errors.nome && (
               <small className="text-danger">{errors.nome.message}</small>
             )}
           </Form.Group>
+
           <Form.Group as={Col} controlId="ingredientes">
             <Form.Label>Ingredientes: </Form.Label>
             <Form.Control
               placeholder="Digite os ingredientes"
               type="text"
-              {...register("ingredientes")}
+              {...register("ingredientes", sobremesaValidator.ingredientes)}
             />
-            {errors.data && (
+            {errors.ingredientes && (
               <small className="text-danger">
                 {errors.ingredientes.message}
               </small>
@@ -58,24 +60,24 @@ const form = () => {
         </Row>
 
         <Form.Group className="mb-3" controlId="historia">
-          <Form.Label>História do sobremesa: </Form.Label>
+          <Form.Label>História da sobremesa: </Form.Label>
           <Form.Control
             placeholder="Conte a história desta sobremesa"
             type="text"
             {...register("historia")}
           />
-          {errors.data && (
-            <small className="text-danger">{errors.historia.message}</small>
-          )}
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="imagem">
           <Form.Label>Adicione uma foto da sobremesa: </Form.Label>
           <Form.Control
-            {...register("Imagem")}
+            {...register("Imagem", sobremesaValidator.Imagem)}
             type="text"
-            placeholder="Adicione o link de uma imagem: Recomendamos 1920x1080p"
+            placeholder="Adicione uma imagem: Recomendamos 1920x1080p"
           />
+          {errors.Imagem && (
+            <small className="text-danger">{errors.Imagem.message}</small>
+          )}
         </Form.Group>
 
         <div className="text-center">

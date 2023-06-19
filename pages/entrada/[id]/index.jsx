@@ -24,7 +24,7 @@ const index = () => {
   }
 
   return (
-    <Pagina2 titulo={entradas.nome}>
+    <Pagina2 footer="fixed" titulo={entradas.nome}>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Deseja Exlcuir {entradas.nome}?</Modal.Title>

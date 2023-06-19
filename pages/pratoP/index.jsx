@@ -27,7 +27,7 @@ const prato = () => {
   }
   return (
     <div>
-      <Pagina2 titulo="Prato Principal">
+      <Pagina2 footer="fixed" titulo="Prato Principal">
         <Link
           href={"/pratoP/form"}
           className="btn mb-2"

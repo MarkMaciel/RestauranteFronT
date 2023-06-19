@@ -48,10 +48,7 @@ const sobremesa = () => {
                 }}
               >
                 <Card>
-                  <Card.Img src={item.Imagem} />
-                  <Card.Body>
-                    <Card.Title>{item.nome}</Card.Title>
-                  </Card.Body>
+                  <Card.Img src={item.Imagem} />-{" "}
                 </Card>
               </Link>
             </Col>

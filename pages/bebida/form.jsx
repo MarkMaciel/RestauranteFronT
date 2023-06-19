@@ -1,20 +1,46 @@
 import Pagina2 from "@/components/Pagina2";
-import bebidaValidator from "@/validators/bebidasValidators";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { BsArrowLeftCircleFill, BsCheck2 } from "react-icons/bs";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+const schema = yup
+  .object({
+    nome: yup
+      .string()
+      .required("Campo obrigatório")
+      .max(20, "Máximo de 20 caracteres"),
+    ingredientes: yup
+      .string()
+      .required("Campo obrigatório")
+      .max(50, "Máximo de 50 caracteres"),
+    Imagem: yup
+      .string()
+      .required("Campo obrigatório")
+      .url("URL Inválida")
+      .min(5, "Mínimo de 5 caracteres"),
+    tipo: yup
+      .string()
+      .required()
+      .oneOf(
+        ["Alcoolica", "Suco", "Refrigerante", "Milshake"],
+        "É necessário escolher uma opção"
+      )
+      .label("Escolha o Tipo"),
+  })
+  .required();
 
 const form = () => {
   const { push } = useRouter();
   const {
     register,
     handleSubmit,
-    setValue,
     formState: { errors },
-  } = useForm();
+  } = useForm({ resolver: yupResolver(schema) });
 
   function salvar(dados) {
     axios.post("/api/bebidas", dados);
@@ -22,7 +48,7 @@ const form = () => {
   }
 
   return (
-    <Pagina2 titulo="Adicionar bebida ao cardápio">
+    <Pagina2 footer="fixed" titulo="Adicionar bebida ao cardápio">
       <Form className="text-white">
         <Row className="mb-3">
           <Form.Group as={Col} controlId="nome">
@@ -30,7 +56,7 @@ const form = () => {
             <Form.Control
               placeholder="Digite o nome da bebida"
               type="text"
-              {...register("nome", bebidaValidator.nome)}
+              {...register("nome")}
             />
             {errors.nome && (
               <small className="text-danger">{errors.nome.message}</small>
@@ -41,7 +67,7 @@ const form = () => {
             <Form.Control
               placeholder="Digite os ingredientes"
               type="text"
-              {...register("ingredientes", bebidaValidator.ingredientes)}
+              {...register("ingredientes")}
             />
             {errors.ingredientes && (
               <small className="text-danger">
@@ -66,15 +92,18 @@ const form = () => {
         <Form.Group className="mb-3" controlId="imagem">
           <Form.Label>Adicione uma foto da bebida: </Form.Label>
           <Form.Control
-            {...register("Imagem", bebidaValidator.Imagem)}
+            {...register("Imagem")}
             type="text"
             placeholder="Adicione o link de uma imagem: Recomendamos 1920x1080p"
           />
+          {errors.Imagem && (
+            <small className="text-danger">{errors.Imagem.message}</small>
+          )}
         </Form.Group>
 
         <Form.Group className="mb-3">
           <Form.Label>Escolha o tipo de bebida: </Form.Label>
-          <Form.Select {...register("tipo", bebidaValidator.tipo)}>
+          <Form.Select {...register("tipo")}>
             <option>Escolha o tipo de bebida</option>
             <option value="Alcoolica">Alcoolica</option>
             <option value="Suco">Suco</option>

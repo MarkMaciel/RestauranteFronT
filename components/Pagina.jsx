@@ -14,7 +14,7 @@ const Pagina = (props) => {
       </Container>
 
       <Container className="mb-6 mt-6">{props.children}</Container>
-      <Rodape footer={"fixed"} />
+      <Rodape footer={props.footer} />
     </div>
   );
 };

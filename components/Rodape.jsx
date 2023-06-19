@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import { Container } from "react-bootstrap";
 
-const Rodape = ({ footer }) => {
+const Rodape = (props) => {
   return (
     <div>
       <Container
@@ -11,7 +11,7 @@ const Rodape = ({ footer }) => {
           width: "100%",
           color: "white",
         }}
-        className={`position-fixed bottom-0 py-3 text-center bg-dark`}
+        className={`position-${props.footer} bottom-0 py-3 text-center bg-dark`}
       >
         Todos os direitos reservados® Marcos Mendes Maciel - 21114290020
         <a

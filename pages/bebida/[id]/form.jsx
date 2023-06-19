@@ -1,5 +1,4 @@
 import Pagina2 from "@/components/Pagina2";
-import bebidaValidator from "@/validators/bebidasValidators";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -7,6 +6,34 @@ import React, { useEffect } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { BsArrowLeftCircleFill, BsCheck2 } from "react-icons/bs";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+const schema = yup
+  .object({
+    nome: yup
+      .string()
+      .required("Campo obrigatório")
+      .max(20, "Máximo de 20 caracteres"),
+    ingredientes: yup
+      .string()
+      .required("Campo obrigatório")
+      .max(50, "Máximo de 50 caracteres"),
+    Imagem: yup
+      .string()
+      .required("Campo obrigatório")
+      .url("URL Inválida")
+      .min(5, "Mínimo de 5 caracteres"),
+    tipo: yup
+      .string()
+      .required()
+      .oneOf(
+        ["Alcoolica", "Suco", "Refrigerante", "Milshake"],
+        "É necessário escolher uma opção"
+      )
+      .label("Escolha o Tipo"),
+  })
+  .required();
 
 const index = () => {
   const { push, query } = useRouter();
@@ -15,7 +42,7 @@ const index = () => {
     handleSubmit,
     setValue,
     formState: { errors },
-  } = useForm();
+  } = useForm({ resolver: yupResolver(schema) });
 
   useEffect(() => {
     if (query.id) {
@@ -84,11 +111,14 @@ const index = () => {
             type="text"
             placeholder="Adicione uma imagem: Recomendamos 1920x1080p"
           />
+          {errors.Imagem && (
+            <small className="text-danger">{errors.Imagem.message}</small>
+          )}
         </Form.Group>
 
         <Form.Group className="mb-3">
           <Form.Label>Escolha o tipo de bebida: </Form.Label>
-          <Form.Select {...register("tipo", bebidaValidator.tipo)}>
+          <Form.Select {...register("tipo")}>
             <option>Escolha o tipo de bebida</option>
             <option value="Alcoolica">Alcoolica</option>
             <option value="Suco">Suco</option>

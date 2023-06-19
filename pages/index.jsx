@@ -7,7 +7,10 @@ import { Card, Col, Row } from "react-bootstrap";
 
 const index = () => {
   return (
-    <Pagina titulo="https://cdn.discordapp.com/attachments/967872716063526942/1119405014297890866/FrontFoodTruck.png">
+    <Pagina
+      footer="fixed"
+      titulo="https://cdn.discordapp.com/attachments/967872716063526942/1119405014297890866/FrontFoodTruck.png"
+    >
       <Row style={{ marginTop: 60 }}>
         <Col style={{ textAlign: "center" }} md={3}>
           <CardStyle

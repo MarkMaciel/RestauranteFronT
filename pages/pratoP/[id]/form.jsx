@@ -1,4 +1,5 @@
 import Pagina2 from "@/components/Pagina2";
+import pratoValidator from "@/validators/pratosValidators";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -42,7 +43,7 @@ const index = () => {
             <Form.Control
               placeholder="Digite o nome do prato"
               type="text"
-              {...register("nome")}
+              {...register("nome", pratoValidator.nome)}
             />
             {errors.nome && (
               <small className="text-danger">{errors.nome.message}</small>
@@ -54,9 +55,9 @@ const index = () => {
             <Form.Control
               placeholder="Digite os ingredientes"
               type="text"
-              {...register("ingredientes")}
+              {...register("ingredientes", pratoValidator.ingredientes)}
             />
-            {errors.data && (
+            {errors.ingredientes && (
               <small className="text-danger">
                 {errors.ingredientes.message}
               </small>
@@ -71,18 +72,18 @@ const index = () => {
             type="text"
             {...register("historia")}
           />
-          {errors.data && (
-            <small className="text-danger">{errors.historia.message}</small>
-          )}
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="imagem">
           <Form.Label>Adicione uma foto do prato: </Form.Label>
           <Form.Control
-            {...register("Imagem")}
+            {...register("Imagem", pratoValidator.Imagem)}
             type="text"
             placeholder="Adicione uma imagem: Recomendamos 1920x1080p"
           />
+          {errors.Imagem && (
+            <small className="text-danger">{errors.Imagem.message}</small>
+          )}
         </Form.Group>
 
         <div className="text-center">

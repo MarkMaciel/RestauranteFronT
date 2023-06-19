@@ -31,7 +31,7 @@ const form = () => {
   }
 
   return (
-    <Pagina2 titulo="Faça seu cadastro">
+    <Pagina2 footer="fixed" titulo="Faça seu cadastro">
       <Form>
         <Form.Group className="mb-3" controlId="nome">
           <Form.Label>Nome: </Form.Label>

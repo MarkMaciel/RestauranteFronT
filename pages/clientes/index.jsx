@@ -7,7 +7,6 @@ import {
   BsFillPencilFill,
   BsFillPersonPlusFill,
   BsFillTrashFill,
-  BsPlusCircle,
 } from "react-icons/bs";
 
 const index = () => {
@@ -31,7 +30,7 @@ const index = () => {
   }
 
   return (
-    <Pagina2 titulo="clientes">
+    <Pagina2 footer="fixed" titulo="clientes">
       <Link
         href={"/clientes/form"}
         className="btn mb-2"

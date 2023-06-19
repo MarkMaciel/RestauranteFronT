@@ -27,7 +27,7 @@ const bebida = () => {
   }
   return (
     <div>
-      <Pagina2 titulo="Bebidas">
+      <Pagina2 footer="fixed" titulo="Bebidas">
         <Link
           href={"/bebida/form"}
           className="btn mb-2"

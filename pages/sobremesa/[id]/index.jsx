@@ -24,7 +24,7 @@ const index = () => {
   }
 
   return (
-    <Pagina2 titulo={sobremesas.nome}>
+    <Pagina2 footer="fixed" titulo={sobremesas.nome}>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>

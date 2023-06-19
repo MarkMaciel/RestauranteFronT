@@ -1,4 +1,5 @@
 import Pagina2 from "@/components/Pagina2";
+import entradaValidator from "@/validators/entradasValidators";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -28,7 +29,7 @@ const form = () => {
   }
 
   return (
-    <Pagina2 titulo="Adicionar prato ao cardápio">
+    <Pagina2 footer="fixed" titulo="Adicionar prato ao cardápio">
       <Form className="text-white">
         <Row className="mb-3">
           <Form.Group as={Col} controlId="nome">
@@ -36,7 +37,7 @@ const form = () => {
             <Form.Control
               placeholder="Digite o nome do prato"
               type="text"
-              {...register("nome")}
+              {...register("nome", entradaValidator.nome)}
             />
             {errors.nome && (
               <small className="text-danger">{errors.nome.message}</small>
@@ -47,9 +48,9 @@ const form = () => {
             <Form.Control
               placeholder="Digite os ingredientes"
               type="text"
-              {...register("ingredientes")}
+              {...register("ingredientes", entradaValidator.ingredientes)}
             />
-            {errors.data && (
+            {errors.ingredientes && (
               <small className="text-danger">
                 {errors.ingredientes.message}
               </small>
@@ -64,18 +65,18 @@ const form = () => {
             type="text"
             {...register("historia")}
           />
-          {errors.data && (
-            <small className="text-danger">{errors.historia.message}</small>
-          )}
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="imagem">
           <Form.Label>Adicione uma foto do prato: </Form.Label>
           <Form.Control
-            {...register("Imagem")}
+            {...register("Imagem", entradaValidator.Imagem)}
             type="text"
             placeholder="Adicione o link de uma imagem: Recomendamos 1920x1080p"
           />
+          {errors.Imagem && (
+            <small className="text-danger">{errors.Imagem.message}</small>
+          )}
         </Form.Group>
 
         <div className="text-center">

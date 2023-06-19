@@ -26,7 +26,7 @@ const entrada = () => {
   }
   return (
     <div>
-      <Pagina2 titulo="Entradas">
+      <Pagina2 footer="fixed" titulo="Entradas">
         <Link
           href={"/entrada/form"}
           className="btn ms-2 mb-3"

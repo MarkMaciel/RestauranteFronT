@@ -24,7 +24,7 @@ const index = () => {
   }
 
   return (
-    <Pagina2 titulo={bebidas.nome}>
+    <Pagina2 footer="fixed" titulo={bebidas.nome}>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Deseja exlcuir a bebida "{bebidas.nome}"</Modal.Title>
@@ -64,7 +64,7 @@ const index = () => {
               <strong>Ingredientes: </strong> {bebidas.ingredientes}
             </p>
             <p>
-              <strong>Tipo: </strong> {bebidas.Tipo}
+              <strong>Tipo: </strong> {bebidas.tipo}
             </p>
             <Row className="">
               <Col>
