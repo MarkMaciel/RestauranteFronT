@@ -30,7 +30,7 @@ const entrada = () => {
         <Link
           href={"/entrada/form"}
           className="btn ms-2 mb-3"
-          style={{ backgroundColor: "darkorange" }}
+          style={{ backgroundColor: "darkorange", color: "white" }}
         >
           Adicionar
           <BsPlusCircle className="ms-1" />

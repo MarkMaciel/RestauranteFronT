@@ -1,96 +1,41 @@
+import CardStyle from "@/components/CardStyle";
 import Pagina from "@/components/Pagina";
 import Rodape from "@/components/Rodape";
 import Link from "next/link";
 import React from "react";
-import { Button, Card, Col, Row } from "react-bootstrap";
-import { BsJustify } from "react-icons/bs";
+import { Card, Col, Row } from "react-bootstrap";
 
 const index = () => {
   return (
     <Pagina titulo="https://cdn.discordapp.com/attachments/967872716063526942/1119405014297890866/FrontFoodTruck.png">
-      <Row>
-        <Col md={3}>
-          <Card>
-            <Card.Header>Entradas</Card.Header>
-            <Card.Img
-              variant="top"
-              src={
-                "https://receitade.com.br/assets/site/uploads/receita/feijoada-light-1920x1080.webp"
-              }
-            />
-            <Card.Body>
-              <Link
-                href={"/entrada"}
-                className="btn"
-                style={{ backgroundColor: "darkorange" }}
-              >
-                Ver mais
-              </Link>
-            </Card.Body>
-          </Card>
+      <Row style={{ marginTop: 60 }}>
+        <Col style={{ textAlign: "center" }} md={3}>
+          <CardStyle
+            titulo="Entradas"
+            imagem="https://receitade.com.br/assets/site/uploads/receita/feijoada-light-1920x1080.webp"
+            link="entrada"
+          />
         </Col>
-
-        <Col md={3}>
-          <Card>
-            <Card.Header>Prato Principal</Card.Header>
-            <Card.Img
-              variant="top"
-              src={
-                "https://receitade.com.br/assets/site/uploads/receita/feijoada-light-1920x1080.webp"
-              }
-            />
-            <Card.Body>
-              <Link
-                href={"/pratoP"}
-                className="btn"
-                style={{ backgroundColor: "darkorange" }}
-              >
-                Ver mais
-              </Link>
-            </Card.Body>
-          </Card>
+        <Col style={{ textAlign: "center" }} md={3}>
+          <CardStyle
+            titulo="Prato Principal"
+            imagem="https://receitade.com.br/assets/site/uploads/receita/feijoada-light-1920x1080.webp"
+            link="pratoP"
+          />
         </Col>
-
-        <Col md={3}>
-          <Card>
-            <Card.Header>Sobremesas</Card.Header>
-            <Card.Img
-              variant="top"
-              src={
-                "https://receitade.com.br/assets/site/uploads/receita/feijoada-light-1920x1080.webp"
-              }
-            />
-            <Card.Body>
-              <Link
-                href={"/sobremesa"}
-                className="btn"
-                style={{ backgroundColor: "darkorange" }}
-              >
-                Ver mais
-              </Link>
-            </Card.Body>
-          </Card>
+        <Col style={{ textAlign: "center" }} md={3}>
+          <CardStyle
+            titulo="Sobremesas"
+            imagem="https://receitade.com.br/assets/site/uploads/receita/feijoada-light-1920x1080.webp"
+            link="sobremesa"
+          />
         </Col>
-
-        <Col md={3}>
-          <Card>
-            <Card.Header>Bebidas</Card.Header>
-            <Card.Img
-              variant="top"
-              src={
-                "https://receitade.com.br/assets/site/uploads/receita/feijoada-light-1920x1080.webp"
-              }
-            />
-            <Card.Body>
-              <Link
-                href={"/bebida"}
-                className="btn"
-                style={{ backgroundColor: "darkorange" }}
-              >
-                Ver mais
-              </Link>
-            </Card.Body>
-          </Card>
+        <Col style={{ textAlign: "center" }} md={3}>
+          <CardStyle
+            titulo="Bebidas"
+            imagem="https://receitade.com.br/assets/site/uploads/receita/feijoada-light-1920x1080.webp"
+            link="bebida"
+          />
         </Col>
       </Row>
     </Pagina>

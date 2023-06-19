@@ -29,7 +29,7 @@ const form = () => {
 
   return (
     <Pagina2 titulo="Adicionar prato ao cardápio">
-      <Form>
+      <Form className="text-white">
         <Row className="mb-3">
           <Form.Group as={Col} controlId="nome">
             <Form.Label>Nome: </Form.Label>
@@ -86,7 +86,7 @@ const form = () => {
           <Link
             href={"/entrada"}
             className="btn ms-3"
-            style={{ backgroundColor: "darkorange" }}
+            style={{ backgroundColor: "darkorange", color: "white" }}
           >
             <BsArrowLeftCircleFill className="me-1" />
             Voltar

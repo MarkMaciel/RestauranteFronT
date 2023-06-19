@@ -31,7 +31,7 @@ const prato = () => {
         <Link
           href={"/pratoP/form"}
           className="btn mb-2"
-          style={{ backgroundColor: "darkorange" }}
+          style={{ backgroundColor: "darkorange", color: "white" }}
         >
           Adicionar
           <BsPlusCircle className="ms-1" />

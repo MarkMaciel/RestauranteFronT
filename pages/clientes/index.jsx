@@ -35,7 +35,10 @@ const index = () => {
       <Link
         href={"/clientes/form"}
         className="btn mb-2"
-        style={{ backgroundColor: "darkorange" }}
+        style={{
+          backgroundColor: "darkorange",
+          color: "white",
+        }}
       >
         Cadastre-se <BsFillPersonPlusFill />
       </Link>
@@ -46,7 +49,6 @@ const index = () => {
             <th></th>
             <th>Nome</th>
             <th>CPF</th>
-            <th>Matricula</th>
             <th>Email</th>
             <th>Telefone</th>
             <th>CEP</th>
@@ -70,7 +72,6 @@ const index = () => {
               </td>
               <td>{item.nome}</td>
               <td>{item.cpf}</td>
-              <td>{item.matricula}</td>
               <td>{item.email}</td>
               <td>{item.telefone}</td>
               <td>{item.cep}</td>

@@ -52,7 +52,7 @@ const index = () => {
           </Card>
         </Col>
         <Col>
-          <div className="p-3">
+          <div className="p-3 text-white">
             <p>
               <strong>Nome: </strong> {pratos.nome}{" "}
             </p>
@@ -63,11 +63,11 @@ const index = () => {
             <p>
               <strong>Ingredientes: </strong> {pratos.ingredientes}
             </p>
-            <Row className="">
+            <Row>
               <Col>
                 <Link
                   className="btn"
-                  style={{ backgroundColor: "darkorange" }}
+                  style={{ backgroundColor: "darkorange", color: "white" }}
                   href={`${pratos.id}/form`}
                 >
                   Editar

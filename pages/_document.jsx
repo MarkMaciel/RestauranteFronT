@@ -17,7 +17,11 @@ export default function Document() {
         crossorigin="anonymous"
       />
       <title>FrontFoodTruck</title>
-      <body>
+      <body
+        style={{
+          background: "black",
+        }}
+      >
         <Main />
         <NextScript />
       </body>

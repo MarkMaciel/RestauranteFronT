@@ -1,4 +1,5 @@
 import Pagina2 from "@/components/Pagina2";
+import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
@@ -51,7 +52,7 @@ const index = () => {
           </Card>
         </Col>
         <Col>
-          <div className="p-3">
+          <div className="p-3 text-white">
             <p>
               <strong>Nome: </strong> {entradas.nome}{" "}
             </p>
@@ -66,7 +67,7 @@ const index = () => {
               <Col>
                 <Link
                   className="btn"
-                  style={{ backgroundColor: "darkorange" }}
+                  style={{ backgroundColor: "darkorange", color: "white" }}
                   href={`${entradas.id}/form`}
                 >
                   Editar

@@ -35,7 +35,7 @@ const index = () => {
 
   return (
     <Pagina2 titulo="Editar entradas" footer="fixed">
-      <Form>
+      <Form className="text-white">
         <Row className="mb-3">
           <Form.Group as={Col} controlId="nome">
             <Form.Label>Nome: </Form.Label>
@@ -93,7 +93,7 @@ const index = () => {
           <Link
             href={"/entrada"}
             className="btn ms-3"
-            style={{ backgroundColor: "darkorange" }}
+            style={{ backgroundColor: "darkorange", color: "white" }}
           >
             <BsArrowLeftCircleFill className="me-1" />
             Voltar

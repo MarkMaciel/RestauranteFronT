@@ -32,7 +32,7 @@ const form = () => {
 
   return (
     <Pagina2 titulo="Faça seu cadastro">
-      <Form>
+      <Form className="text-white">
         <Form.Group className="mb-3" controlId="nome">
           <Form.Label>Nome: </Form.Label>
           <Form.Control
@@ -51,7 +51,7 @@ const form = () => {
             type="text"
             placeholder="Digite seu cpf - Ex: 000.000.000-00"
             mask="999.999.999-99"
-            {...register("cpf")}
+            {...register("cpf", clienteValidator.cpf)}
             onChange={handleChange}
           />
           {errors.cpf && (
@@ -77,7 +77,7 @@ const form = () => {
             type="tel"
             placeholder="Digite seu telefone - Ex: (61) 00000-0000"
             mask="(99) 99999-9999"
-            {...register("telefone")}
+            {...register("telefone", clienteValidator.telefone)}
             onChange={handleChange}
           />
           {errors.telefone && (
@@ -91,7 +91,7 @@ const form = () => {
             type="text"
             placeholder="Digite seu CEP - Ex: 00000-000"
             mask="99999-999"
-            {...register("cep")}
+            {...register("cep", clienteValidator.cep)}
             onChange={handleChange}
           />
           {errors.cep && (
