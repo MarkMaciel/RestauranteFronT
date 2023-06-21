@@ -35,6 +35,9 @@ const clienteValidator = {
       message: "Email incorreto",
     },
   },
+  data: {
+    required: "O campo é obrigatório",
+  },
   telefone: {
     required: "O campo é obrigatório",
     maxLength: {
@@ -55,6 +58,20 @@ const clienteValidator = {
     minLength: {
       value: 8,
       message: "CEP incorreto",
+    },
+  },
+  uf: {
+    required: "O campo é obrigatório",
+  },
+  cidade: {
+    required: "O campo é obrigatório",
+    minLength: {
+      value: 3,
+      message: "A quantidade de caracteres mínima é 3",
+    },
+    maxLength: {
+      value: 20,
+      message: "A quantidade de caracteres máxima é 20",
     },
   },
   logradouro: {

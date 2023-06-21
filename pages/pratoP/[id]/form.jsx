@@ -3,7 +3,7 @@ import pratoValidator from "@/validators/pratosValidators";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { BsArrowLeftCircleFill, BsCheck2 } from "react-icons/bs";
@@ -16,6 +16,8 @@ const index = () => {
     setValue,
     formState: { errors },
   } = useForm();
+
+  const [bebidas, setBebidas] = useState([]);
 
   useEffect(() => {
     if (query.id) {
@@ -34,9 +36,19 @@ const index = () => {
     push(`/pratoP/`);
   }
 
+  useEffect(() => {
+    getAll();
+  }, []);
+
+  function getAll() {
+    axios.get("/api/bebidas").then((res) => {
+      setBebidas(res.data);
+    });
+  }
+
   return (
-    <Pagina2 titulo="Editar Prato Principal" footer="fixed">
-      <Form>
+    <Pagina2 footer="fixed" titulo="Adicionar prato ao cardápio">
+      <Form className="text-white">
         <Row className="mb-3">
           <Form.Group as={Col} controlId="nome">
             <Form.Label>Nome: </Form.Label>
@@ -64,6 +76,18 @@ const index = () => {
             )}
           </Form.Group>
         </Row>
+
+        <Form.Group className="mb-3" controlId="bebida">
+          <Form.Label>Bebida que acompanha: </Form.Label>
+          <Form.Select defaultValue={"..."} {...register("bebida")}>
+            <option value={"..."}>...</option>
+            {bebidas.map((item) => (
+              <option key={item.id} value={item.nome}>
+                {item.nome}
+              </option>
+            ))}
+          </Form.Select>
+        </Form.Group>
 
         <Form.Group className="mb-3" controlId="historia">
           <Form.Label>História do prato: </Form.Label>
@@ -94,7 +118,7 @@ const index = () => {
           <Link
             href={"/pratoP"}
             className="btn ms-3"
-            style={{ backgroundColor: "darkorange" }}
+            style={{ backgroundColor: "darkorange", color: "white" }}
           >
             <BsArrowLeftCircleFill className="me-1" />
             Voltar

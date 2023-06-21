@@ -63,16 +63,6 @@ const index = () => {
             )}
           </Form.Group>
         </Row>
-
-        <Form.Group className="mb-3" controlId="historia">
-          <Form.Label>História do prato: </Form.Label>
-          <Form.Control
-            placeholder="Conte a história deste prato"
-            type="text"
-            {...register("historia")}
-          />
-        </Form.Group>
-
         <Form.Group className="mb-3" controlId="imagem">
           <Form.Label>Adicione uma foto do prato: </Form.Label>
           <Form.Control

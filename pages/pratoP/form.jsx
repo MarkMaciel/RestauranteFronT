@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import Pagina2 from "@/components/Pagina2";
 import pratoValidator from "@/validators/pratosValidators";
 import axios from "axios";
@@ -16,6 +17,8 @@ const form = () => {
     formState: { errors },
   } = useForm();
 
+  const [bebidas, setBebidas] = useState([]);
+
   function salvar(dados) {
     axios.post("/api/pratos", dados);
     push("/pratoP");
@@ -26,6 +29,16 @@ const form = () => {
     const value = event.target.value;
     const mascara = event.target.getAttribute("mask");
     setValue(name, mask(value, mascara));
+  }
+
+  useEffect(() => {
+    getAll();
+  }, []);
+
+  function getAll() {
+    axios.get("/api/bebidas").then((res) => {
+      setBebidas(res.data);
+    });
   }
 
   return (
@@ -58,6 +71,18 @@ const form = () => {
             )}
           </Form.Group>
         </Row>
+
+        <Form.Group className="mb-3" controlId="bebida">
+          <Form.Label>Bebida que acompanha: </Form.Label>
+          <Form.Select defaultValue={"..."} {...register("bebida")}>
+            <option value={"..."}>...</option>
+            {bebidas.map((item) => (
+              <option key={item.id} value={item.nome}>
+                {item.nome}
+              </option>
+            ))}
+          </Form.Select>
+        </Form.Group>
 
         <Form.Group className="mb-3" controlId="historia">
           <Form.Label>História do prato: </Form.Label>

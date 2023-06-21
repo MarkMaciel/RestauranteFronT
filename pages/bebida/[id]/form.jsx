@@ -63,7 +63,7 @@ const index = () => {
 
   return (
     <Pagina2 titulo="Editar bebida" footer="fixed">
-      <Form>
+      <Form className="text-white">
         <Row className="mb-3">
           <Form.Group as={Col} controlId="nome">
             <Form.Label>Nome: </Form.Label>
@@ -92,16 +92,13 @@ const index = () => {
           </Form.Group>
         </Row>
 
-        <Form.Group className="mb-3" controlId="historia">
-          <Form.Label>História da bebida: </Form.Label>
+        <Form.Group className="mb-3" controlId="teor">
+          <Form.Label>Teor álcoolico: </Form.Label>
           <Form.Control
-            placeholder="Conte a história desta bebida"
+            placeholder="Digite o teor álcoolico se houver"
             type="text"
-            {...register("historia")}
+            {...register("teor")}
           />
-          {errors.historia && (
-            <small className="text-danger">{errors.historia.message}</small>
-          )}
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="imagem">
@@ -138,7 +135,7 @@ const index = () => {
           <Link
             href={"/bebida"}
             className="btn ms-3"
-            style={{ backgroundColor: "darkorange" }}
+            style={{ backgroundColor: "darkorange", color: "white" }}
           >
             <BsArrowLeftCircleFill className="me-1" />
             Voltar

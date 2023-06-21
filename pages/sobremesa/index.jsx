@@ -3,7 +3,7 @@ import Pagina2 from "@/components/Pagina2";
 import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { Card, Col, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import { BsPlusCircle } from "react-icons/bs";
 
 const sobremesa = () => {
@@ -27,11 +27,11 @@ const sobremesa = () => {
   }
   return (
     <div>
-      <Pagina2 titulo="Sobremesas">
+      <Pagina2 footer="fixed" titulo="Sobremesas">
         <Link
           href={"/sobremesa/form"}
           className="btn mb-2"
-          style={{ backgroundColor: "darkorange" }}
+          style={{ backgroundColor: "darkorange", color: "white" }}
         >
           Adicionar
           <BsPlusCircle className="ms-1" />
@@ -47,9 +47,12 @@ const sobremesa = () => {
                   textAlign: "center",
                 }}
               >
-                <Card>
-                  <Card.Img src={item.Imagem} />-{" "}
-                </Card>
+                <CardStyle
+                  style={{ width: "60%", height: "60%" }}
+                  imagem={item.Imagem}
+                  titulo={item.nome}
+                  link={`sobremesa/${item.id}`}
+                />
               </Link>
             </Col>
           ))}

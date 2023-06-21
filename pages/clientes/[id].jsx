@@ -29,10 +29,25 @@ const form = () => {
     const mascara = event.target.getAttribute("mask");
     setValue(name, mask(value, mascara));
   }
+  const checkCEP = (e) => {
+    if (!e.target.value) return;
+    const cep = e.target.value.replace(/\D/g, "");
+    console.log(cep);
+    fetch(`https://viacep.com.br/ws/${cep}/json/`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setValue("logradouro", data.logradouro);
+        setValue("bairro", data.bairro);
+        setValue("cidade", data.localidade);
+        setValue("uf", data.uf);
+        setFocus("numero");
+      });
+  };
 
   return (
-    <Pagina2 footer="fixed" titulo="Faça seu cadastro">
-      <Form>
+    <Pagina2 titulo="Faça seu cadastro">
+      <Form className="text-white">
         <Form.Group className="mb-3" controlId="nome">
           <Form.Label>Nome: </Form.Label>
           <Form.Control
@@ -51,7 +66,7 @@ const form = () => {
             type="text"
             placeholder="Digite seu cpf - Ex: 000.000.000-00"
             mask="999.999.999-99"
-            {...register("cpf")}
+            {...register("cpf", clienteValidator.cpf)}
             onChange={handleChange}
           />
           {errors.cpf && (
@@ -71,13 +86,24 @@ const form = () => {
           )}
         </Form.Group>
 
+        <Form.Group className="mb-3" controlId="data">
+          <Form.Label>Data de nascimento: </Form.Label>
+          <Form.Control
+            type="date"
+            {...register("data", clienteValidator.data)}
+          />
+          {errors.data && (
+            <small className="text-danger">{errors.data.message}</small>
+          )}
+        </Form.Group>
+
         <Form.Group className="mb-3" controlId="telefone">
           <Form.Label>Telefone: </Form.Label>
           <Form.Control
             type="tel"
             placeholder="Digite seu telefone - Ex: (61) 00000-0000"
             mask="(99) 99999-9999"
-            {...register("telefone")}
+            {...register("telefone", clienteValidator.telefone)}
             onChange={handleChange}
           />
           {errors.telefone && (
@@ -88,14 +114,37 @@ const form = () => {
         <Form.Group className="mb-3" controlId="cep">
           <Form.Label>CEP: </Form.Label>
           <Form.Control
+            placeholder="12345-678"
             type="text"
-            placeholder="Digite seu CEP - Ex: 00000-000"
-            mask="99999-999"
             {...register("cep")}
-            onChange={handleChange}
+            onBlur={checkCEP}
           />
-          {errors.cep && (
-            <small className="text-danger">{errors.cep.message}</small>
+          {errors?.cep && (
+            <small className="text-danger">{errors.cep?.message}</small>
+          )}
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="uf">
+          <Form.Label>Uf: </Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Ex: DF"
+            {...register("uf", clienteValidator.uf)}
+          />
+          {errors.uf && (
+            <small className="text-danger">{errors.uf.message}</small>
+          )}
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="cidade">
+          <Form.Label>Cidade: </Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Ex: Brasília"
+            {...register("cidade", clienteValidator.cidade)}
+          />
+          {errors.cidade && (
+            <small className="text-danger">{errors.cidade.message}</small>
           )}
         </Form.Group>
 
@@ -154,7 +203,7 @@ const form = () => {
           <Link
             href={"/clientes"}
             className="ms-2 btn"
-            style={{ backgroundColor: "DarkOrange" }}
+            style={{ backgroundColor: "DarkOrange", color: "white" }}
           >
             <BsArrowLeftCircleFill className="me-1" />
             Voltar

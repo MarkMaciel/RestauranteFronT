@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import Pagina2 from "@/components/Pagina2";
 import axios from "axios";
 import Link from "next/link";
@@ -77,16 +78,13 @@ const form = () => {
           </Form.Group>
         </Row>
 
-        <Form.Group className="mb-3" controlId="historia">
-          <Form.Label>História da bebida: </Form.Label>
+        <Form.Group className="mb-3" controlId="teor">
+          <Form.Label>Teor álcoolico: </Form.Label>
           <Form.Control
             placeholder="Conte a história desta bebida"
             type="text"
-            {...register("historia")}
+            {...register("teor")}
           />
-          {errors.historia && (
-            <small className="text-danger">{errors.historia.message}</small>
-          )}
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="imagem">

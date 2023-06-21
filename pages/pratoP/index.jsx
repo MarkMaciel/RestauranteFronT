@@ -47,12 +47,12 @@ const prato = () => {
                   textAlign: "center",
                 }}
               >
-                <Card>
-                  <Card.Img src={item.Imagem} />
-                  <Card.Body>
-                    <Card.Title>{item.nome}</Card.Title>
-                  </Card.Body>
-                </Card>
+                <CardStyle
+                  style={{ width: "60%", height: "60%" }}
+                  imagem={item.Imagem}
+                  titulo={item.nome}
+                  link={`pratoP/${item.id}`}
+                />
               </Link>
             </Col>
           ))}

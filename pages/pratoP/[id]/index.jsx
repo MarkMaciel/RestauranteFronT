@@ -63,6 +63,9 @@ const index = () => {
             <p>
               <strong>Ingredientes: </strong> {pratos.ingredientes}
             </p>
+            <p>
+              <strong>Bebida que acompanha: </strong> {pratos.bebida}
+            </p>
             <Row>
               <Col>
                 <Link

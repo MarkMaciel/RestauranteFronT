@@ -5,32 +5,39 @@ import { Card } from "react-bootstrap";
 const CardStyle = (props) => {
   return (
     <div>
-      <Card
-        style={{ boxShadow: "0 8px 11px rgba(255, 255, 255, 0.2)" }}
-        border="warning"
-        className="text-white bg-dark"
+      <Link
+        href={`/${props.link}`}
+        style={{
+          textDecoration: "none",
+        }}
       >
-        <Card.Header
-          className="text-center"
+        <Card
+          border="warning"
           style={{
-            backgroundColor: "#FF8500",
-            fontSize: "25px",
-            fontFamily: "system-ui",
+            boxShadow: "0 8px 11px rgba(255, 255, 0, 0.2)",
+            transition: "transform 0.3s ease",
           }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = "scale(1.05)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = "scale(1)";
+          }}
+          className="text-white bg-dark"
         >
-          {props.titulo}
-        </Card.Header>
-        <Card.Img variant="top" src={props.imagem} />
-        <Card.Body>
-          <Link
-            href={`/${props.link}`}
-            className="btn"
-            style={{ backgroundColor: "darkorange", color: "white" }}
+          <Card.Header
+            className="text-center"
+            style={{
+              backgroundColor: "#FF8500",
+              fontSize: "25px",
+              fontFamily: "system-ui",
+            }}
           >
-            Ver mais
-          </Link>
-        </Card.Body>
-      </Card>
+            {props.titulo}
+          </Card.Header>
+          <Card.Img variant="top" src={props.imagem} />
+        </Card>
+      </Link>
     </div>
   );
 };

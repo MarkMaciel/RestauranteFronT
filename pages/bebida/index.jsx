@@ -31,7 +31,7 @@ const bebida = () => {
         <Link
           href={"/bebida/form"}
           className="btn mb-2"
-          style={{ backgroundColor: "darkorange" }}
+          style={{ backgroundColor: "darkorange", color: "white" }}
         >
           Adicionar
           <BsPlusCircle className="ms-1" />
@@ -47,12 +47,12 @@ const bebida = () => {
                   textAlign: "center",
                 }}
               >
-                <Card>
-                  <Card.Img src={item.Imagem} />
-                  <Card.Body>
-                    <Card.Title>{item.nome}</Card.Title>
-                  </Card.Body>
-                </Card>
+                <CardStyle
+                  style={{ width: "60%", height: "60%" }}
+                  imagem={item.Imagem}
+                  titulo={item.nome}
+                  link={`bebida/${item.id}`}
+                />
               </Link>
             </Col>
           ))}

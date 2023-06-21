@@ -54,13 +54,9 @@ const index = () => {
           </Card>
         </Col>
         <Col>
-          <div className="p-3">
+          <div className="p-3 text-white">
             <p>
               <strong>Nome: </strong> {sobremesas.nome}{" "}
-            </p>
-            <p>
-              {" "}
-              <strong>História da sobremesa: </strong> {sobremesas.historia}
             </p>
             <p>
               <strong>Ingredientes: </strong> {sobremesas.ingredientes}
@@ -69,7 +65,7 @@ const index = () => {
               <Col>
                 <Link
                   className="btn"
-                  style={{ backgroundColor: "darkorange" }}
+                  style={{ backgroundColor: "darkorange", color: "white" }}
                   href={`${sobremesas.id}/form`}
                 >
                   Editar

@@ -30,7 +30,7 @@ const form = () => {
 
   return (
     <Pagina2 footer="fixed" titulo="Adicionar sobremesa ao cardápio">
-      <Form>
+      <Form className="text-white">
         <Row className="mb-3">
           <Form.Group as={Col} controlId="nome">
             <Form.Label>Nome: </Form.Label>
@@ -59,15 +59,6 @@ const form = () => {
           </Form.Group>
         </Row>
 
-        <Form.Group className="mb-3" controlId="historia">
-          <Form.Label>História da sobremesa: </Form.Label>
-          <Form.Control
-            placeholder="Conte a história desta sobremesa"
-            type="text"
-            {...register("historia")}
-          />
-        </Form.Group>
-
         <Form.Group className="mb-3" controlId="imagem">
           <Form.Label>Adicione uma foto da sobremesa: </Form.Label>
           <Form.Control
@@ -88,7 +79,7 @@ const form = () => {
           <Link
             href={"/sobremesa"}
             className="btn ms-3"
-            style={{ backgroundColor: "darkorange" }}
+            style={{ backgroundColor: "darkorange", color: "white" }}
           >
             <BsArrowLeftCircleFill className="me-1" />
             Voltar

@@ -4,7 +4,6 @@ import axios from "axios";
 import { mask } from "remask";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { BsArrowLeftCircleFill, BsCheck2 } from "react-icons/bs";
@@ -15,6 +14,7 @@ const form = () => {
     register,
     setValue,
     handleSubmit,
+    setFocus,
     formState: { errors },
   } = useForm();
 
@@ -30,8 +30,24 @@ const form = () => {
     setValue(name, mask(value, mascara));
   }
 
+  const checkCEP = (e) => {
+    if (!e.target.value) return;
+    const cep = e.target.value.replace(/\D/g, "");
+    console.log(cep);
+    fetch(`https://viacep.com.br/ws/${cep}/json/`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setValue("logradouro", data.logradouro);
+        setValue("bairro", data.bairro);
+        setValue("cidade", data.localidade);
+        setValue("uf", data.uf);
+        setFocus("numero");
+      });
+  };
+
   return (
-    <Pagina2 footer="fixed" titulo="Faça seu cadastro">
+    <Pagina2 titulo="Faça seu cadastro">
       <Form className="text-white">
         <Form.Group className="mb-3" controlId="nome">
           <Form.Label>Nome: </Form.Label>
@@ -71,6 +87,17 @@ const form = () => {
           )}
         </Form.Group>
 
+        <Form.Group className="mb-3" controlId="data">
+          <Form.Label>Data de nascimento: </Form.Label>
+          <Form.Control
+            type="date"
+            {...register("data", clienteValidator.data)}
+          />
+          {errors.data && (
+            <small className="text-danger">{errors.data.message}</small>
+          )}
+        </Form.Group>
+
         <Form.Group className="mb-3" controlId="telefone">
           <Form.Label>Telefone: </Form.Label>
           <Form.Control
@@ -88,14 +115,37 @@ const form = () => {
         <Form.Group className="mb-3" controlId="cep">
           <Form.Label>CEP: </Form.Label>
           <Form.Control
+            placeholder="12345-678"
             type="text"
-            placeholder="Digite seu CEP - Ex: 00000-000"
-            mask="99999-999"
-            {...register("cep", clienteValidator.cep)}
-            onChange={handleChange}
+            {...register("cep")}
+            onBlur={checkCEP}
           />
-          {errors.cep && (
-            <small className="text-danger">{errors.cep.message}</small>
+          {errors?.cep && (
+            <small className="text-danger">{errors.cep?.message}</small>
+          )}
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="uf">
+          <Form.Label>Uf: </Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Ex: DF"
+            {...register("uf", clienteValidator.uf)}
+          />
+          {errors.uf && (
+            <small className="text-danger">{errors.uf.message}</small>
+          )}
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="cidade">
+          <Form.Label>Cidade: </Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Ex: Brasília"
+            {...register("cidade", clienteValidator.cidade)}
+          />
+          {errors.cidade && (
+            <small className="text-danger">{errors.cidade.message}</small>
           )}
         </Form.Group>
 
@@ -154,7 +204,7 @@ const form = () => {
           <Link
             href={"/clientes"}
             className="ms-2 btn"
-            style={{ backgroundColor: "DarkOrange" }}
+            style={{ backgroundColor: "DarkOrange", color: "white" }}
           >
             <BsArrowLeftCircleFill className="me-1" />
             Voltar
