@@ -106,7 +106,7 @@ const form = () => {
             <option value="Alcoolica">Alcoolica</option>
             <option value="Suco">Suco</option>
             <option value="Refrigerante">Refrigerante</option>
-            <option value="Milkshake">Milkshake</option>
+            <option value="Refrigerante">Milkshake</option>
           </Form.Select>
           {errors.tipo && (
             <small className="text-danger">{errors.tipo.message}</small>
@@ -121,7 +121,7 @@ const form = () => {
           <Link
             href={"/bebida"}
             className="btn ms-3"
-            style={{ backgroundColor: "darkorange" }}
+            style={{ backgroundColor: "darkorange", color: "white" }}
           >
             <BsArrowLeftCircleFill className="me-1" />
             Voltar

@@ -57,10 +57,6 @@ const index = () => {
               <strong>Nome: </strong> {entradas.nome}{" "}
             </p>
             <p>
-              {" "}
-              <strong>História do prato: </strong> {entradas.historia}
-            </p>
-            <p>
               <strong>Ingredientes: </strong> {entradas.ingredientes}
             </p>
             <Row className="">

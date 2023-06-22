@@ -13,8 +13,8 @@ const entradaValidator = {
   ingredientes: {
     required: "O campo é obrigatório",
     maxLength: {
-      value: 50,
-      message: "A quantidade de caracteres máxima é 50",
+      value: 100,
+      message: "A quantidade de caracteres máxima é 100",
     },
   },
   Imagem: {

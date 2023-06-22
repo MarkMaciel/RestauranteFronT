@@ -40,7 +40,7 @@ const index = () => {
             variant="danger"
             onClick={() => {
               axios.delete(`/api/sobremesas/${sobremesas.id}`);
-              push("/entrada");
+              push("/sobremesa");
             }}
           >
             Excluir

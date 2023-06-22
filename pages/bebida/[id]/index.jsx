@@ -38,7 +38,7 @@ const index = () => {
             variant="danger"
             onClick={() => {
               axios.delete(`/api/bebidas/${bebidas.id}`);
-              push("/entrada");
+              push("/bebida");
             }}
           >
             Excluir
