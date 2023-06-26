@@ -15,6 +15,7 @@ const form = () => {
     register,
     setValue,
     handleSubmit,
+    setFocus,
     formState: { errors },
   } = useForm();
 

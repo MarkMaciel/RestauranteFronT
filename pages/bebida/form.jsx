@@ -28,7 +28,7 @@ const schema = yup
       .string()
       .required()
       .oneOf(
-        ["Alcoolica", "Suco", "Refrigerante", "Milshake"],
+        ["Alcoolica", "Suco", "Refrigerante", "Milkshake"],
         "É necessário escolher uma opção"
       )
       .label("Escolha o Tipo"),
@@ -106,7 +106,7 @@ const form = () => {
             <option value="Alcoolica">Alcoolica</option>
             <option value="Suco">Suco</option>
             <option value="Refrigerante">Refrigerante</option>
-            <option value="Refrigerante">Milkshake</option>
+            <option value="Milkshake">Milkshake</option>
           </Form.Select>
           {errors.tipo && (
             <small className="text-danger">{errors.tipo.message}</small>

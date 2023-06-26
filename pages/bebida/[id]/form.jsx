@@ -28,7 +28,7 @@ const schema = yup
       .string()
       .required()
       .oneOf(
-        ["Alcoolica", "Suco", "Refrigerante", "Milshake"],
+        ["Alcoolica", "Suco", "Refrigerante", "Milkshake"],
         "É necessário escolher uma opção"
       )
       .label("Escolha o Tipo"),
