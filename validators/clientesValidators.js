@@ -41,8 +41,8 @@ const clienteValidator = {
   telefone: {
     required: "O campo é obrigatório",
     maxLength: {
-      value: 14,
-      message: "O maxímo de caracteres é 14",
+      value: 50,
+      message: "O maxímo de caracteres é 50",
     },
     minLength: {
       value: 9,
